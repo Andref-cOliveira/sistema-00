@@ -8,8 +8,16 @@ class CadastroController extends \HXPHP\System\Controller
 		$this->request->setCustomFilters(array(
 				'email'=>FILTER_VALIDATE_EMAIL
 			));
+		$post = $this->request->post();
+		if(!empty($post)){
+			$cadastrarUsuario = User::cadastrar($post);
+			$this->load('Helpers\Alert',array(
+				'danger',
+				'Ops! Não foi possível efetuar seu cadastro.<br/> Verifique os erros abaixo:',
+				$cadastrarUsuario->errors
+			));
+		}
 
-		$cadastrarUsuario = User::cadastrar($this->request->post());
 
 		//var_dump($this->request->post());Substitui $POST melhor segurança
 
