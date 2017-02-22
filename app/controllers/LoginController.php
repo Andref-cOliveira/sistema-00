@@ -11,8 +11,10 @@ class LoginController extends \HXPHP\System\Controller
 			 $configs->auth->after_logout,
 			 true
 		);
+	}
 
-		$this->auth->redirectCheck(false);//se falso pagina privada se true pagina publica
+	public function indexAction(){
+		$this->auth->redirectCheck(true);//se falso pagina privada se true pagina publica
 	}
 
 
@@ -28,10 +30,16 @@ class LoginController extends \HXPHP\System\Controller
 			} else {
 				$this->load('Modules\Messages', 'auth');
 				$this->messages->setBlock('alerts');
-				$error = $this->messages->getByCode($login->code);
+				$error = $this->messages->getByCode($login->code, array(
+						'message'=> $login->tentativas_restantes
+					));
 
 				$this->load('Helpers\Alert', $error);
 			}
 		}
+	}
+
+	public function sairAction(){
+		return $this->auth->logout();
 	}
 }

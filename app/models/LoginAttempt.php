@@ -6,7 +6,7 @@ class LoginAttempt extends \HXPHP\System\Model{
 	}
 
 	public static function tentativasRestantes($user_id){
-		return intval(5-self::totalDeTentativas());
+		return intval(4-self::totalDeTentativas($user_id));
 	}
 
 	public static function registrarTentativa($user_id){
@@ -25,6 +25,6 @@ class LoginAttempt extends \HXPHP\System\Model{
 	}
 
 	public static function exitemTentativas($user_id){
-		return self::totalDeTentativas($user_id) < 5? true: false;
+		return self::totalDeTentativas($user_id) < 4? true: false;
 	}
 }
