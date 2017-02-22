@@ -10,7 +10,7 @@ class LoginAttempt extends \HXPHP\System\Model{
 	}
 
 	public static function registrarTentativa($user_id){
-		self::create(array('' => , 
+		self::create(array(
 			'user_id' => $user_id
 		));
 	}
@@ -25,6 +25,6 @@ class LoginAttempt extends \HXPHP\System\Model{
 	}
 
 	public static function exitemTentativas($user_id){
-		return self::totalDeTentativas() < 5? true: false;
+		return self::totalDeTentativas($user_id) < 5? true: false;
 	}
 }

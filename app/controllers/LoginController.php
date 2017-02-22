@@ -12,7 +12,7 @@ class LoginController extends \HXPHP\System\Controller
 			 true
 		);
 
-		$this->auth->redirectCheck(true);//se falso pagina privada se true pagina publica
+		$this->auth->redirectCheck(false);//se falso pagina privada se true pagina publica
 	}
 
 
@@ -21,7 +21,7 @@ class LoginController extends \HXPHP\System\Controller
 
 		$post = $this->request->post();
 		if(!empty($post)){
-
+			User::login($post);
 		}
 	}
 }
