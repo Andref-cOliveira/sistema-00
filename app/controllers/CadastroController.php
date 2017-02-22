@@ -12,7 +12,7 @@ class CadastroController extends \HXPHP\System\Controller
 			 true
 		);
 
-		$this->auth->redirectCheck(true);//se falso pagina privada se true pagina publica
+		$this->auth->redirectCheck(false);//se falso pagina privada se true pagina publica
 	}
 
 	public function cadastrarAction(){
@@ -22,14 +22,19 @@ class CadastroController extends \HXPHP\System\Controller
 				'email'=>FILTER_VALIDATE_EMAIL
 			));
 		$post = $this->request->post();
+
 		if(!empty($post)){
 			$cadastrarUsuario = User::cadastrar($post);
-			$this->load('Helpers\Alert',array(
-				'danger',
-				'Ops! Não foi possível efetuar seu cadastro.<br/> Verifique os erros abaixo:',
-				$cadastrarUsuario->errors
-			));
-		}
+			if($cadastrarUsuario->status == false){
+				$this->load('Helpers\Alert',array(
+					'danger',
+					'Ops! Não foi possível efetuar seu cadastro.<br/> Verifique os erros abaixo:',
+					$cadastrarUsuario->errors
+				));
+			} else {
+			$this->auth->login($cadastrarUsuario->user->id, $cadastrarUsuario->user->username);
+			}
+		}	
 
 
 		//var_dump($this->request->post());Substitui $POST melhor segurança
