@@ -47,6 +47,14 @@ class Email
 		$headers.= "Content-Type: text/html; charset=UTF-8\n";
 		$headers.= "From: \"{$from_name}\" <{$from_mail}>\n";
 
-		return @mail ($to, $subject, $message, $headers);
+		echo $to."<br>";
+		echo $subject."<br>";
+		echo $message."<br>";
+		echo $from_name."<br>";
+		echo $from_mail."<br>";
+		echo $headers."<br>";
+
+		return true;
+		//return @mail ($to, $subject, $message, $headers);
 	}
 }
