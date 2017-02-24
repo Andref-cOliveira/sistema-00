@@ -56,7 +56,6 @@ class RecuperarController extends \HXPHP\System\Controller
 				$this->load('Services\Email');
 
 				//função send() do arquivo Email.php
-				//foi alterada para retornar true e imprimir a menssagem
 				$envioDoEmail = $this->email->send(
 					$validar->user->email,
 					'HXPHP - '.$message['subject'],
@@ -82,13 +81,11 @@ class RecuperarController extends \HXPHP\System\Controller
 			$success = $this->messages->getByCode('link-enviado');
 			$this->view->setFile('blank');
 			$this->load('Helpers\Alert', $success);
-			echo "From :".$this->configs->mail->from;
-			echo "From :".$this->configs->mail->from;
 		}
 	}
 
 	public function redefinirAction($token){
-
+		$validarToken = Recovery::validarToken($token);
 	}
 
 	public function alterarAction($token){
