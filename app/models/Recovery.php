@@ -39,6 +39,7 @@ class Recovery extends \HXPHP\System\Model
 
 		$validar = self::find_by_token($token);
 
+
 		if(!is_null($validar)){
 			$callbackObj->status = true;
 			$callbackObj->user = $validar->user;
@@ -46,5 +47,14 @@ class Recovery extends \HXPHP\System\Model
 			$callbackObj->code = 'token-invalido';
 		}
 		return $callbackObj;
+	}
+
+	public static function limpar($user_id){
+		return self::delete_all(array(
+			'conditions' => array(
+				'user_id = ?',
+				$user_id
+			)
+		));
 	}
 }

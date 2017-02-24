@@ -25,6 +25,6 @@ class LoginAttempt extends \HXPHP\System\Model{
 	}
 
 	public static function exitemTentativas($user_id){
-		return self::totalDeTentativas($user_id) < 4? true: false;
+		return self::totalDeTentativas($user_id) <= 4? true: false;
 	}
 }
