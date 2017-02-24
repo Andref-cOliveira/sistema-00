@@ -18,12 +18,15 @@
 
 	$configs->env->development->menu->setMenus(array(
 		'Home/dashboard' => '%baseURI%/home',
-		'Link/user' => 'http://www.google.com',
-		'Submenus/cog' => array(
-			'Painel/dashboard' => '%baseURI%/home',
-			'/atualizações/hand-o-up' => '%baseURI%/atualizacoes',
-		)
+		'Projetos/briefcase' => '%baseURI%/projetos',
+		'Editar Perfil/cog' => '%baseURI%/perfil/editar',
 	),'user');
+
+	$configs->env->development->menu->setConfigs(array(
+		'container' => 'nav',
+		'container_class' => 'navbar navbar-default',
+		'menu' => 'nav navbar'
+	));
 
 	$configs->env->development->menu->setMenus(array(
 		'Home/dashboard' => '%baseURI%/home',
