@@ -29,9 +29,6 @@ class PerfilController extends \HXPHP\System\Controller
 	
 	public function editarAction(){
 
-	}
-
-	public function atualizarAction(){
 		$this->view->setFile('editar');
 
 		$user_id = $this->auth->getUserId();
@@ -57,6 +54,5 @@ class PerfilController extends \HXPHP\System\Controller
 				));
 			}
 		}
-		$this->view->setVar('user', $atualizarUsuario->user);
 	}
 }

@@ -1,5 +1,6 @@
                 <div class="panel-body">
                     <?php echo (isset($this->alert) ? $this->alert : '');
+                    echo (isset($this->menu) ? $this->menu : '');
 
                         $values = [
                             'name' => $view_user->name,
@@ -10,7 +11,7 @@
 
                         Form::open('editarusuario', $values,
                             [
-                                'action'=> BASE.'perfil/atualizar/',
+                                'action'=> BASE.'perfil/editar/',
                                 'prevent' => [
                                     'focus'
                                 ]
@@ -55,4 +56,9 @@
                         Form::close(false);
 
                     ?>
+                    <br/>
+                    <p>
+                    <a href="<?php echo BASE; ?>/login/sair" class="btn btn-danger">Sair</a>
+                    </p>
                 </div>
+                
