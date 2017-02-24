@@ -18,4 +18,12 @@ class HomeController extends \HXPHP\System\Controller
 		$this->view->setTitle('HXPHP - Administrativo')
 					->setVar('user',User::find($user_id));
 	}
+
+	//bloqueio por nivel de acesso
+	public function bloqueadaAction(){
+		$this->auth->roleCheck(array(
+			'administrator',
+			'user'
+		));
+	}
 }

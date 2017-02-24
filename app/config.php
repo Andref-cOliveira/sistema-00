@@ -15,6 +15,20 @@
 
 	$configs->env->development->auth->setURLs('/sistema/home/','/sistema/login/');
 
+
+	$configs->env->development->menu->setMenus(array(
+		'Home/dashboard' => '%baseURI%/home',
+		'Link/user' => 'http://www.google.com',
+		'Submenus/cog' => array(
+			'Painel/dashboard' => '%baseURI%/home',
+			'/atualizações/hand-o-up' => '%baseURI%/atualizacoes',
+		)
+	),'user');
+
+	$configs->env->development->menu->setMenus(array(
+		'Home/dashboard' => '%baseURI%/home',
+	));
+
 	/*
 		//Globais
 		$configs->title = 'Titulo customizado';
