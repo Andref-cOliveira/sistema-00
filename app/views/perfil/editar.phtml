@@ -1,0 +1,53 @@
+                <div class="panel-body">
+                    <?php echo (isset($this->alert) ? $this->alert : '');
+
+                        $values = [];
+
+                        Form::open('editarusuario', $values,
+                            [
+                                'action'=> BASE.'perfil/atualizar/',
+                                'prevent' => [
+                                    'focus'
+                                ]
+
+                            ]
+                        );
+
+                        Form::Textbox(
+                            'Nome:',
+                            'name',
+                            [
+                                'required' => 1
+                            ]
+                        );
+
+                        Form::Textbox(
+                            'Login:',
+                            'username',
+                            [
+                                'required' => 1
+                            ]
+                        );
+
+                        Form::Email(
+                            'Email:',
+                            'email',
+                            [
+                                'required' => 1
+                            ]
+                        );
+
+                        Form::Textbox(
+                            'Senha:',
+                            'password'
+                        );
+
+                        Form::Button('Atualizar Perfil', 'submit',[
+                                'style' => 'width: 100%',
+                                'class' => 'btn-success'
+                            ]);
+
+                        Form::close(false);
+
+                    ?>
+                </div>
