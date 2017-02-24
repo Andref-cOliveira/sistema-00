@@ -43,18 +43,12 @@ class Email
 
 		list($from_mail, $from_name) = $from;
 
-		$headers = "MIME-Version: 1.0\n";
+		$headers = "MIME-Version: 1.1\n";
 		$headers.= "Content-Type: text/html; charset=UTF-8\n";
 		$headers.= "From: \"{$from_name}\" <{$from_mail}>\n";
 
-		echo $to."<br>";
-		echo $subject."<br>";
-		echo $message."<br>";
-		echo $from_name."<br>";
-		echo $from_mail."<br>";
-		echo $headers."<br>";
 
-		return true;
-		//return @mail ($to, $subject, $message, $headers);
+		//parte original do codigo para mandar a mensagem
+		return @mail ($to, $subject, $message, $headers);
 	}
 }

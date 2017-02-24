@@ -55,6 +55,8 @@ class RecuperarController extends \HXPHP\System\Controller
 
 				$this->load('Services\Email');
 
+				//função send() do arquivo Email.php
+				//foi alterada para retornar true e imprimir a menssagem
 				$envioDoEmail = $this->email->send(
 					$validar->user->email,
 					'HXPHP - '.$message['subject'],
